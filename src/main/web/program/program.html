@@ -1,0 +1,25 @@
+<html>
+<head></head>
+<body>
+<script type="text/javascript">
+    fetch("Program1.wasm")
+        .then(response => response.arrayBuffer())
+        .then(bytes => WebAssembly.instantiate(bytes, {imports: {}}))
+        .then(results => {
+            document.getElementById("aufgabe1").innerHTML = results.instance.exports.main(5);
+        });
+
+    fetch("Program2.wasm")
+        .then(response => response.arrayBuffer())
+        .then(bytes => WebAssembly.instantiate(bytes, {imports: {}}))
+        .then(results => {
+            document.getElementById("aufgabe2").innerHTML = results.instance.exports.main(5);
+        });
+</script>
+<h1>Program</h1>
+<h2>Aufgabe 1</h2>
+<p id="aufgabe1"></p>
+<h2>Aufgabe 2</h2>
+<p id="aufgabe2"></p>
+</body>
+</html>
